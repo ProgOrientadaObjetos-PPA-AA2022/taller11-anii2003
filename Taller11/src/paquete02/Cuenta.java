@@ -17,11 +17,11 @@ public class Cuenta {
     protected double subtotal;
     protected double iva;
     
-    public Cuenta(String n,ArrayList<Menu> lista, double i){
+    /*public Cuenta(String n,ArrayList<Menu> lista, double i){
         nombreCliente = n;
         menuSolicitado = lista;
         iva = i;
-    }
+    }*/
     
     public void establecerNombreCliente(String n){
         nombreCliente = n;
@@ -31,12 +31,16 @@ public class Cuenta {
         menuSolicitado = lista;
     }
     
-    public void establecerSubtotal(){
-        
+    public void establecerSubtotal(double s){
+        subtotal = s;
     }
     
     public void establecerValorTotalCancelar(){
-        
+        for (int i = 0; i < menuSolicitado.size(); i++) {
+            subtotal += menuSolicitado.get(i).valorMenu;
+        }
+        subtotal = subtotal * (iva/100);
+        valorTotalCancelar = subtotal + iva;           
     }
     
     public void establecerIva(double i){
