@@ -5,6 +5,14 @@
  */
 package paquete01;
 
+import java.util.ArrayList;
+import paquete02.Cuenta;
+import paquete02.Menu;
+import paquete02.MenuALaCarta;
+import paquete02.MenuDeNiños;
+import paquete02.MenuDelDia;
+import paquete02.MenuEconomico;
+
 /**
  *
  * @author reroes
@@ -15,23 +23,48 @@ public class Ejecutor01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ArrayList<Menu> listaMenu = new ArrayList<>();
+        
+        MenuDeNiños menuNinios1 = new MenuDeNiños("Niños 01",2,1,1.50);
+        MenuDeNiños menuNinios2 = new MenuDeNiños("Niños 02",3,1,1.50);
+        
+        MenuEconomico menuEconomico1 = new MenuEconomico("Econo 001",4,25);
+        
+        MenuDelDia menuDia1 = new MenuDelDia("Dia 001",5,1,1);
+        
+        MenuALaCarta menuCarta1 = new MenuALaCarta("Carta 001",6,1.5,2,10);
+        
+        listaMenu.add(menuNinios1);
+        listaMenu.add(menuNinios2);
+        listaMenu.add(menuEconomico1);
+        listaMenu.add(menuDia1);
+        listaMenu.add(menuCarta1);
+        
+        for (int i = 0; i < listaMenu.size(); i++) {
+            listaMenu.get(i).establecerValorMenu();
+        }
+        
+        Cuenta cuenta = new Cuenta("René Elizalde",listaMenu,10);
+        cuenta.establecerMenuSolicitado(listaMenu);
+        cuenta.establecerSubtotal();
+        cuenta.establecerValorTotalCancelar();
+        
+        System.out.println(cuenta);
     }
-    
-    
+     
 }
 // lo que debe presentar
 /*
 Factura
 Cliente: René Elizalde
-Menu del Día:
+Menu de Niños:
 	Plato: Niños 01
 	Valor Inicial: 2,00
 	Valor helado: 1,00
 	Valor pastel: 1,50
 	Valor del Menú: 4,50
 
-Menu del Día:
+Menu de Niños:
 	Plato: Niños 02
 	Valor Inicial: 3,00
 	Valor helado: 1,00

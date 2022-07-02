@@ -5,7 +5,7 @@
 package paquete02;
 
 /**
- * valor inicial - descuento (economico)
+ * 
  * @author DELL
  */
 public abstract class Menu {
@@ -36,6 +36,7 @@ public abstract class Menu {
         return valorInicialMenu;
     }
     
+    @Override
     public String toString(){
         String cadena = String.format("Nombre plato: %s\n"
                 + "Valor inicial del menú: %.2f\n",
